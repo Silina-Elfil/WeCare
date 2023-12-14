@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Blinker SemiBold';
+    
 }
 
 body{
@@ -10,127 +11,237 @@ body{
     background-color: #fff;
 }
 
-li{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: #44546A;
-    font-size: 17px;
-}
-
-a:hover{
-    color:cornflowerblue;
-}
-
-/* HEADER */
-header{
-    position: relative;
-    padding: 0 32px;
-}
-
-.navbar{
-    width: 100%;
-    height: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.navbar .logo a{
-    font-size: 24px;
+.navbar-brand{
+    /*font-size: 32px;*/
     font-weight: bold;
+    font-family: 'Segoe UI Black';
+    color: white;
+}
+
+.nav-item a{
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.navbar {
+    transition: 0.5s;
+}
+
+.navbar-scrolled{
+    background-color: #121F36;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    opacity: 0;
+    transition: all 0.2s;
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-link:hover::after{
+    opacity: 1;
+}
+
+.carousel-caption-responsive{
+    font-size: 32px;
+}
+
+.btn {
+    border-radius: 30px;
+}
+
+.overview{
+    height: auto;
+    background-color: #121F36;
+}
+
+.overview-text{
+    color: #fff;
     font-family: 'Segoe UI Black';
 }
 
-.navbar .links{
-    display: flex;
-    gap: 32px;
-}
 
-.navbar .toggle_btn{
-    color: #44546A;
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
-}
-
-.action_btn{
-    background-color: #44546A;
-    color: #D6DCE5;
-    padding: 8px 16px;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    font-size: 12.8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: scale 0.2 ease;
-}
-
-.action_btn:hover{
-    color: #D6DCE5;
-    font-weight: bolder;
-    scale: 1.05;
-}
-
-.action_btn:active{
-    scale:0.95;
-}
-
-/*DROPDOWN MENU*/
-.dropdown_menu{
-    display: none;
-    position: absolute;
-    right: 32px;
-    top: 60px;
-    height: 0;
-    width: 300px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.dropdown_menu.open{
-    height: 240px;
-}
-
-.dropdown_menu li{
-    padding: 11.2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dropdown_menu .action_btn{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-
-/*RESPONSIVE*/
-@media(max-width: 992px){
-    .navbar .links,
-    .navbar .action_btn {
-        display: none;
+  /* Extra small devices (phones, 600px and down) */
+ @media only screen and (max-width: 600px) {
+    .heroPageimg{
+        height:250px;
     }
-    .navbar .toggle_btn{
-        display: block;
+    .navbar-brand{
+        font-size: 20px;
     }
-    .dropdown_menu{
-        display: block;
+    .carousel-text1{
+        font-size: 25px;
+        margin-top: 30px;
+    }
+    .carousel-text2{
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    .carousel-join-button{
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn{
+        margin-top: 20px;
+    }
+    .overview-img{
+        width: 50px;
+        margin-top: 10px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+    .aboutus-title{
+        font-size: 25px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 16px;
+        text-align: center;
+    }
+    .aboutus-btn{
+        margin-top: 10px;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .heroPageimg{
+        height: 300px;
+    }
+    .navbar-brand{
+        font-size: 25px;
+    }
+    .carousel-text1{
+        font-size: 32px;
+        margin-top: 50px;
+    }
+    .carousel-text2{
+        font-size: 28px;
+        margin-top: 40px;
+    }
+    .carousel-join-button{
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 35px;
+    }
+    .overview-img{
+        width: 60px;
+        margin-top: 10px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+    .aboutus-title{
+        font-size: 30px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 18px;
+        text-align: center;
+    }
+    .aboutus-btn{
+        margin-top: 15px;
     }
 }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+   
+} 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    
+    .heroPageimg{
+        height: 100%;
+    }
+    .navbar-brand{
+        font-size: 32px;
+    }
+    .carousel-text1{
+        font-size: 50px;
+        margin-top: 100px;
+    }
+    .carousel-text2{
+        font-size: 40px;
+        margin-top: 40px;
+    }
+    .carousel-join-button{
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 90px;
+    }
+    .overview-img{
+        width: 60px;
+        margin-top: 20px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .aboutus-title{
+        font-size: 25px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 16px;
+        text-align: center;
+        margin-top: 20px;
+    }
+} 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
 
-@media (max-width: 576px){
-    .dropdown_menu{
-        left: 32px;
-        width: unset;
+    .heroPageimg{
+        height: 100%;
+    }
+    .navbar-brand{
+        font-size: 32px;
+    }
+    .carousel-text1{
+        font-size: 60px;
+        margin-top: 200px;
+    }
+    .carousel-text2{
+        font-size: 55px;
+        margin-top: 50px;
+    }
+    .carousel-join-button{
+        font-size: 28px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 90px;
+    }
+    .overview-img{
+        width: 100px;
+        margin-top: 40px;
+    }
+    .overview-text{
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
     }
 }
