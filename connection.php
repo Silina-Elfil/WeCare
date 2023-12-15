@@ -6,4 +6,5 @@
 
 $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME)
     or die("Failed to connect : " . mysqli_connect_error());
+
 ?>
