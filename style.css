@@ -71,6 +71,29 @@ body{
     font-family: 'Segoe UI Black';
 }
 
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer .social-icons {
+    margin: 0; 
+    padding: 0; 
+}
+
+footer .social-icons li {
+    display: inline-block; 
+    margin-right: 10px; 
+}
+
+footer .social-icons img {
+    width: 30px; 
+    height: 30px;
+}
 
   /* Extra small devices (phones, 600px and down) */
  @media only screen and (max-width: 600px) {
@@ -160,6 +183,7 @@ body{
     .aboutus-btn{
         margin-top: 15px;
     }
+    
 }
   
   /* Medium devices (landscape tablets, 768px and up) */
@@ -209,6 +233,9 @@ body{
         text-align: center;
         margin-top: 20px;
     }
+    .aboutus-btn{
+        margin-top: 15px;
+    }
 } 
   
   /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -243,5 +270,19 @@ body{
         font-size: 30px;
         margin-top: 20px;
         margin-bottom: 30px;
+    }
+    .aboutus-title{
+        font-size: 50px;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .aboutus-text{
+        font-size: 26px;
+        text-align:justify;
+        margin-top: 25px;
+        padding: 30px;
+    }
+    .aboutus-btn{
+        margin-top: 30px;
     }
 }
