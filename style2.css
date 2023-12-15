@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Italiana&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+.row {
+    background-color: white;
+    border-radius: 30px;
+}
+
+
+
+h5, p, button, input, a {
+    font-family: 'Blinker SemiBold';
+    color: #121F36;
+}
+
+.brand{
+    font-weight: bold;
+    font-family: 'Segoe UI Black';
+    color: #121F36;
+}
+
+.btn1 {
+    border: none;
+    outline: none;
+    background-color: #2b73ef;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;    
+}
+
+.btn1:hover {
+    background-color: whitesmoke;
+    color: #2b73ef;
+    border: 1px solid;
+}

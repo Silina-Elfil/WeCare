@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Blinker SemiBold';
+    
+}
+
+body{
+    height: 100vh;
+    background-color: #fff;
+}
+
+.navbar-brand{
+    /*font-size: 32px;*/
+    font-weight: bold;
+    font-family: 'Segoe UI Black';
+    color: white;
+    }
+
+.nav-item a{
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.navbar {
+    transition: 0.5s;
+}
+
+.navbar-scrolled{
+    background-color: #121F36;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    opacity: 0;
+    transition: all 0.2s;
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-link:hover::after{
+    opacity: 1;
+}
+
+.carousel-caption-responsive{
+    font-size: 32px;
+}
+
+.btn {
+    border-radius: 30px;
+}
+
+.overview{
+    height: auto;
+    background-color: #121F36;
+}
+
+.overview-text{
+    color: #fff;
+    font-family: 'Segoe UI Black';
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer .social-icons {
+    margin: 0; 
+    padding: 0; 
+}
+
+footer .social-icons li {
+    display: inline-block; 
+    margin-right: 10px; 
+}
+
+footer .social-icons img {
+    width: 40px; 
+    height: 40px;
+}
+
+  /* Extra small devices (phones, 600px and down) */
+ @media only screen and (max-width: 600px) {
+    .heroPageimg{
+        height:250px;
+    }
+    .navbar-brand{
+        font-size: 20px;
+    }
+    .carousel-text1{
+        font-size: 25px;
+        margin-top: 30px;
+    }
+    .carousel-text2{
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    .carousel-join-button{
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn{
+        margin-top: 20px;
+    }
+    .overview-img{
+        width: 50px;
+        margin-top: 10px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+    .aboutus-title{
+        font-size: 25px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 16px;
+        text-align: center;
+    }
+    .aboutus-btn{
+        margin-top: 10px;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .heroPageimg{
+        height: 300px;
+    }
+    .navbar-brand{
+        font-size: 25px;
+    }
+    .carousel-text1{
+        font-size: 32px;
+        margin-top: 50px;
+    }
+    .carousel-text2{
+        font-size: 28px;
+        margin-top: 40px;
+    }
+    .carousel-join-button{
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 35px;
+    }
+    .overview-img{
+        width: 60px;
+        margin-top: 10px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+    .aboutus-title{
+        font-size: 30px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 18px;
+        text-align: center;
+    }
+    .aboutus-btn{
+        margin-top: 15px;
+    }
+    
+}
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+   
+} 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    
+    .heroPageimg{
+        height: 100%;
+    }
+    .navbar-brand{
+        font-size: 32px;
+    }
+    .carousel-text1{
+        font-size: 50px;
+        margin-top: 100px;
+    }
+    .carousel-text2{
+        font-size: 40px;
+        margin-top: 40px;
+    }
+    .carousel-join-button{
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 90px;
+    }
+    .overview-img{
+        width: 60px;
+        margin-top: 20px;
+    }
+    .overview-text{
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .aboutus-title{
+        font-size: 25px;
+        text-align: center;
+    }
+    .aboutus-text{
+        font-size: 16px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .aboutus-btn{
+        margin-top: 15px;
+    }
+} 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+
+    .heroPageimg{
+        height: 100%;
+    }
+    .navbar-brand{
+        font-size: 32px;
+    }
+    .carousel-text1{
+        font-size: 60px;
+        margin-top: 200px;
+    }
+    .carousel-text2{
+        font-size: 55px;
+        margin-top: 50px;
+    }
+    .carousel-join-button{
+        font-size: 28px;
+        margin-bottom: 0px;
+    }
+    .carousel-btn, .aboutus-btn{
+        margin-top: 90px;
+    }
+    .overview-img{
+        width: 100px;
+        margin-top: 40px;
+    }
+    .overview-text{
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .aboutus-title{
+        font-size: 50px;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .aboutus-text{
+        font-size: 26px;
+        text-align:justify;
+        margin-top: 25px;
+        padding: 30px;
+    }
+    .aboutus-btn{
+        margin-top: 30px;
+    }
+}
