@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,58 @@
     <title>WeCare - user sign up</title>
     <link href="style2.css" rel="stylesheet">
 </head>
+
 <body>
+    <?php
+    include("connection.php");
+
+    if (isset($_POST['signup'])) {
+        $username = mysqli_real_escape_string($con, $_POST['username']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $vpassword = mysqli_real_escape_string($con, $_POST['v-password']);        
+
+        //check if the db have the name and email
+        $query1 = "SELECT * FROM member where username = '$username'";
+        $result1 = mysqli_query($con, $query1);  //fetch
+        $count_name = mysqli_num_rows($result1); // count the num of row having the same name
+    
+        $query2 = "SELECT * FROM member where email = '$email'";
+        $result2 = mysqli_query($con, $query2);
+        $count_email = mysqli_num_rows($result2);
+
+        if ($count_name === 0 && $count_email === 0) {
+            if ($password == $vpassword) {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $query3 = "INSERT INTO member(username, email, password, roleId) 
+                VALUES('$username', '$email', '$hash', 1)";
+                $result3 = mysqli_query($con, $query3);
+                if ($result3) {
+                    header("Location: home.php");
+                }
+            } else{
+                echo'<script>
+                window.location.href = "usersignup.php";
+                alert("Password do not match");
+                </script>';
+            }
+        } else {
+            if ($count_name > 0) {
+                echo '<script>
+            window.location.href="usersignup.php";
+            alert("Username already exists")
+            </script>';
+            }
+            if ($count_email > 0) {
+                echo '<script>
+        window.location.href="usersignup.php";
+        alert("Email already exists")
+        </script>';
+            }
+        }
+    }
+
+    ?>
     <section class="Form my-4 mx-5">
         <div class="container">
             <div class="row g-0">
@@ -23,8 +75,8 @@
                         <div class="mt-5"></div>
                         <div class="form-row">
                             <div class="col-lg-10">
-                                <input type="email" class="form-control p-3" placeholder="ENTER YOUR EMAIL"
-                                    name="email" id="email" oninput="removeErrorClass('email')">
+                                <input type="email" class="form-control p-3" placeholder="ENTER YOUR EMAIL" name="email"
+                                    id="email" oninput="removeErrorClass('email')">
                                 <div id="emailError" class="text-danger" style="float: right;"></div>
                                 <div class="my-5"></div>
                             </div>
@@ -142,4 +194,5 @@
         }
     </style>
 </body>
+
 </html>

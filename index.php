@@ -134,7 +134,7 @@ $_SESSION;
     <footer class="mt-5 pt-5 pb-5" style="background-color: #121F36; color: white;">
         <div class="container">
             <div>
-                <h1 style="margin-top: 10px;">WeCare</h1>
+                <h1 style="margin-top: 10px; font-family:'Segoe UI Black';">WeCare</h1>
             </div>
             <div class="row mt-4">
                 <div class="col-lg-4 col-md-6">
