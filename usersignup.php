@@ -1,63 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WeCare - Sign In</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>WeCare - user sign up</title>
     <link href="style2.css" rel="stylesheet">
 </head>
-
 <body>
-    <?php
-    include("connection.php");
-
-    session_start(); // Start the session
-    
-    if (isset($_POST['signin'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $query1 = "select * from member where username = '$username' and password = '$password'";
-        $result = mysqli_query($con, $query1);
-        $count = mysqli_num_rows($result);
-
-        if ($count == 1) {
-            header("Location:home.php");
-        } else {
-            $_SESSION['loginFailed'] = true; // Set the session variable when login fails
-            header("Location:signin.php");
-            exit();
-        }
-    }
-
-    // Check if the session variable is set
-    $loginFailed = isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'];
-
-    // Unset the session variable to remove the message after displaying it
-    unset($_SESSION['loginFailed']);
-    ?>
     <section class="Form my-4 mx-5">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-7 px-md-5 py-md-5">
                     <h1 class="font-weight-bold py-3 brand">WeCare</h1>
-                    <h5>SIGN IN TO YOUR ACCOUNT</h5>
-
-
+                    <h5>CREATE AN ACCOUNT AS A USER</h5>
 
                     <form method="POST" action="" onsubmit="return isValid()">
-                    <div class="mt-5"></div>
+                        <div class="mt-5"></div>
                         <div class="form-row">
                             <div class="col-lg-10">
-                                <?php
-                                // Display error message if login fails
-                                if ($loginFailed) {
-                                    echo '<div class="alert alert-danger" role="alert">Invalid username or password</div>';
-                                }
-                                ?>
+                                <input type="email" class="form-control p-3" placeholder="ENTER YOUR EMAIL"
+                                    name="email" id="email" oninput="removeErrorClass('email')">
+                                <div id="emailError" class="text-danger" style="float: right;"></div>
+                                <div class="my-5"></div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -78,35 +47,43 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-10">
-                                <input type="submit" class="btn1 mt-2 mb-4" value="SIGN IN" name="signin" />
+                                <input type="password" class="form-control p-3" placeholder="VERIFY YOUR PASSWORD"
+                                    name="v-password" id="v-password" oninput="removeErrorClass('v-password')">
+                                <div id="v-passwordError" class="text-danger" style="float: right;"></div>
+                                <div class="my-5"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <input type="submit" class="btn1 mt-2 mb-4" value="CREATE ACCOUNT" name="signup" />
                             </div>
                         </div>
                     </form>
-                    <a href="#">Forgot Password?</a>
-                    <p class="mt-2">Don't have an account? <a href="signup.php">Create Account</a></p>
+                    <p class="mt-5">Already a member? <a href="signIn.php">Sign In to your account</a></p>
                 </div>
                 <div class="col-lg-5">
-                    <img src="images/signin.jpg" class="img-fluid" style="height: 100%; width: auto;">
+                    <img src="images/signin.jpg" class="img-fluid" style="height: auto; width: 100%;">
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
-
     <script>
         function isValid() {
+            var email = document.getElementById('email').value;
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var vpassword = document.getElementById('v-password').value;
             var isValid = true;
+
+            if (email.length === 0) {
+                setErrorClass('email');
+                setError('email', 'Email field is empty');
+                isValid = false;
+            } else {
+                removeErrorClass('email');
+                removeError('email');
+            }
 
             if (username.length === 0) {
                 setErrorClass('username');
@@ -124,6 +101,15 @@
             } else {
                 removeErrorClass('password');
                 removeError('password');
+            }
+
+            if (vpassword.length === 0) {
+                setErrorClass('v-password');
+                setError('v-password', 'Password verification field is empty');
+                isValid = false;
+            } else {
+                removeErrorClass('v-password');
+                removeError('v-password');
             }
 
             return isValid;
@@ -156,5 +142,4 @@
         }
     </style>
 </body>
-
 </html>
