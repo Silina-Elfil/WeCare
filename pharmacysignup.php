@@ -165,7 +165,8 @@
                             </div>
                         </div>
                     </form>
-                    <p class="mt-5">Already a member? <a href="signIn.php">Sign In to your account</a></p>
+                    <p class="mt-5">Not a pharmacy? <a href="signup.php">Sign Up using other methods</a></p>
+                    <p>Already a member? <a href="signIn.php">Sign In to your account</a></p>
                 </div>
                 <div class="col-lg-5">
                     <img src="images/signin.jpg" class="img-fluid" style="height: auto; width: 100%;">
