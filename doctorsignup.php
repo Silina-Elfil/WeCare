@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,106 @@
     <title>Document</title>
     <link href="style2.css" rel="stylesheet">
 </head>
+
 <body>
+    <?php
+    session_start(); // Start the session
+    
+    include("connection.php");
+
+    if (isset($_POST['signup'])) {
+        $username = mysqli_real_escape_string($con, $_POST['username']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $specialty = mysqli_real_escape_string($con, $_POST['specialty']);
+        $oom = mysqli_real_escape_string($con, $_POST['oom']);
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $vpassword = mysqli_real_escape_string($con, $_POST['v-password']);
+
+        $loginFailed = false;
+        $usernameAvailable = false;
+        $emailAvailable = false;
+
+        //check if the db have the name and email
+        $query1 = "SELECT * FROM member where username = '$username'";
+        $result1 = mysqli_query($con, $query1);  //fetch
+        $count_name = mysqli_num_rows($result1); // count the num of row having the same name
+    
+        $query2 = "SELECT * FROM member where email = '$email'";
+        $result2 = mysqli_query($con, $query2);
+        $count_email = mysqli_num_rows($result2);
+
+
+        if ($count_name === 0 && $count_email === 0) {
+            if ($password == $vpassword) {
+                $loginFailed = false;
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+
+                $query3 = "INSERT INTO member(username, email, password, roleId) 
+           VALUES('$username', '$email', '$hash', 2)";
+                $result3 = mysqli_query($con, $query3);
+
+                if ($result3) {
+                    // Get the last inserted user ID
+                    $drId = mysqli_insert_id($con);
+
+                    // Now use this $drId when inserting into drprofile
+                    $query4 = "INSERT INTO drprofile(drId, orderOfMedId, speciality)
+               VALUES('$drId', '$oom', '$specialty')";
+                    $result4 = mysqli_query($con, $query4);
+
+                    if ($result4) {
+                        // Successfully inserted into both tables
+                        header("Location: home.php");
+                        exit();
+                    } else {
+                        // Handle error in the drprofile insertion
+                        echo "Error inserting into drprofile: " . mysqli_error($con);
+                    }
+                } else {
+                    // Handle error in the member insertion
+                    echo "Error inserting into member: " . mysqli_error($con);
+                }
+
+
+                if ($result3 && $result4) {
+                    header("Location: home.php");
+                    exit();
+                }
+            } else {
+                $loginFailed = true;
+            }
+
+        } else {
+            if ($count_name > 0) {
+                $usernameAvailable = true;
+            }
+            if ($count_email > 0) {
+                $emailAvailable = true;
+            }
+        }
+        // If execution reaches here, it means the login failed, username email already in db
+        if ($loginFailed) {
+            $_SESSION['loginFailed'] = true;
+        }
+        if ($emailAvailable or $emailAvailable) {
+            $_SESSION['usernameAvailable'] = true;
+            $_SESSION['emailAvailable'] = true;
+        }
+        header("Location: doctorsignup.php");
+        exit();
+    }
+
+    // Check if the session variable is set
+    $loginFailed = isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'];
+    $usernameAvailable = isset($_SESSION['usernameAvailable']) && $_SESSION['usernameAvailable'];
+    $emailAvailable = isset($_SESSION['emailAvailable']) && $_SESSION['emailAvailable'];
+
+    // Unset the session variable to remove the message after displaying it
+    unset($_SESSION['loginFailed']);
+    unset($_SESSION['usernameAvailable']);
+    unset($_SESSION['emailAvailable']);
+
+    ?>
     <section class="Form my-4 mx-5">
         <div class="container">
             <div class="row g-0">
@@ -23,8 +123,28 @@
                         <div class="mt-5"></div>
                         <div class="form-row">
                             <div class="col-lg-10">
-                                <input type="email" class="form-control p-3" placeholder="ENTER YOUR EMAIL"
-                                    name="email" id="email" oninput="removeErrorClass('email')">
+                                <?php
+                                // Display error message if login fails
+                                if ($loginFailed) {
+                                    echo '<div class="alert alert-danger" role="alert">Passwords do not match</div>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <?php
+                                // Display error message if unavailable
+                                if ($usernameAvailable && $emailAvailable) {
+                                    echo '<div class="alert alert-danger" role="alert">Username or Email already exists</div>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control p-3" placeholder="ENTER YOUR EMAIL" name="email"
+                                    id="email" oninput="removeErrorClass('email')">
                                 <div id="emailError" class="text-danger" style="float: right;"></div>
                                 <div class="my-5"></div>
                             </div>
@@ -39,8 +159,8 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-10">
-                                <input type="TEXT" class="form-control p-3" placeholder="SPECIALTY"
-                                    name="specialty" id="specialty" oninput="removeErrorClass('specialty')">
+                                <input type="TEXT" class="form-control p-3" placeholder="SPECIALTY" name="specialty"
+                                    id="specialty" oninput="removeErrorClass('specialty')">
                                 <div id="specialtyError" class="text-danger" style="float: right;"></div>
                                 <div class="my-5"></div>
                             </div>
@@ -178,4 +298,5 @@
         }
     </style>
 </body>
+
 </html>
