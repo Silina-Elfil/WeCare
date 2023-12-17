@@ -47,7 +47,7 @@
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
                 $query3 = "INSERT INTO member(username, email, password, roleId) 
-           VALUES('$username', '$email', '$hash', 2)";
+                           VALUES('$username', '$email', '$hash', 2)";
                 $result3 = mysqli_query($con, $query3);
 
                 if ($result3) {
@@ -56,20 +56,14 @@
 
                     // Now use this $drId when inserting into drprofile
                     $query4 = "INSERT INTO drprofile(drId, orderOfMedId, speciality)
-               VALUES('$drId', '$oom', '$specialty')";
+                                VALUES('$drId', '$oom', '$specialty')";
                     $result4 = mysqli_query($con, $query4);
 
                     if ($result4) {
                         // Successfully inserted into both tables
                         header("Location: home.php");
                         exit();
-                    } else {
-                        // Handle error in the drprofile insertion
-                        echo "Error inserting into drprofile: " . mysqli_error($con);
                     }
-                } else {
-                    // Handle error in the member insertion
-                    echo "Error inserting into member: " . mysqli_error($con);
                 }
 
 

@@ -46,8 +46,24 @@
                 $query3 = "INSERT INTO member(username, email, password, roleId) 
                 VALUES('$username', '$email', '$hash', 1)";
                 $result3 = mysqli_query($con, $query3);
-                
+
                 if ($result3) {
+                    // Get the last inserted user ID
+                    $userId = mysqli_insert_id($con);
+
+                    // Now use this $drId when inserting into drprofile
+                    $query4 = "INSERT INTO userprofile(userId)
+                                VALUES('$userId')";
+                    $result4 = mysqli_query($con, $query4);
+
+                    if ($result4) {
+                        // Successfully inserted into both tables
+                        header("Location: home.php");
+                        exit();
+                    }
+                }
+                
+                if ($result3 && $result4) {
                     header("Location: home.php");
                     exit();
                 }
