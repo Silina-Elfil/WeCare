@@ -55,15 +55,15 @@
                     $drId = mysqli_insert_id($con);
 
                     // Now use this $drId when inserting into drprofile
-                    $query4 = "INSERT INTO drprofile(drId, orderOfMedId, speciality)
+                    $query4 = "INSERT INTO drprofile(drId, orderOfMedId, specialty)
                                 VALUES('$drId', '$oom', '$specialty')";
                     $result4 = mysqli_query($con, $query4);
 
-                    if ($result4) {
-                        // Successfully inserted into both tables
-                        header("Location: home.php");
-                        exit();
-                    }
+                    // if ($result4) {
+                    //     // Successfully inserted into both tables
+                    //     header("Location: home.php");
+                    //     exit();
+                    // }
                 }
 
 

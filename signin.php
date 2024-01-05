@@ -21,7 +21,7 @@
         $password = $_POST['password'];
     
         // Select the hashed password from the database based on the provided username
-        $query = "SELECT password FROM member WHERE username = '$username'";
+        $query = "SELECT * FROM member WHERE username = '$username'";
         $result = mysqli_query($con, $query);
     
         if (!$result) {
@@ -38,6 +38,7 @@
                 // Password is correct
                 // Redirect to the home page or perform other actions
                 $_SESSION['username'] = $username; // Set a session variable if needed
+                $_SESSION['memberId'] = $row['memberId'];
                 header("Location: home.php");
                 exit();
             }

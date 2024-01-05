@@ -8,8 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style2.css">
-    <title>WeCare - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Navbar</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #121F36">
@@ -21,16 +21,16 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Profile</a>
+                        <a class="nav-link" href="index.php" style="color: white;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="interaction.php" style="color: white;">Interaction</a>
+                        <a class="nav-link" href="home.php" style="color: white;">Interaction</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="explore.php" style="color: white;">Explore</a>
+                        <a class="nav-link" href="#" style="color: white;">About US</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Create</a>
+                        <a class="nav-link" href="#" style="color: white;">Contact Us</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
