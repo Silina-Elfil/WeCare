@@ -68,7 +68,7 @@
 
 
                 if ($result3 && $result4) {
-                    header("Location: home.php");
+                    header("Location: signin.php");
                     exit();
                 }
             } else {

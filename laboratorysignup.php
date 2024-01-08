@@ -53,15 +53,15 @@
                                 VALUES('$labId')";
                     $result4 = mysqli_query($con, $query4);
 
-                    if ($result4) {
-                        // Successfully inserted into both tables
-                        header("Location: home.php");
-                        exit();
-                    }
+                    // if ($result4) {
+                    //     // Successfully inserted into both tables
+                    //     header("Location: home.php");
+                    //     exit();
+                    // }
                 }
                 
                 if ($result3 && $result4) {
-                    header("Location: home.php");
+                    header("Location: signin.php");
                     exit();
                 }
             } else{

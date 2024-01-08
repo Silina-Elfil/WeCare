@@ -11,7 +11,7 @@ $result = mysqli_query($con, $query);
 echo '<div class="row">';
 
 while ($row = mysqli_fetch_array($result)) {
-    echo '<div class="col-lg-6 p-0">'; 
+    echo '<div class="col-lg-6 mb-4">'; 
     echo '<div class="card" style="max-width: 600px;">';
     echo '<div class="row g-0">';
     echo '<div class="col-md-4">';
