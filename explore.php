@@ -18,10 +18,9 @@
     <?php include("navbar2.php"); ?>
     
     <div class="py-2 w-100" style="background-color: aliceblue; height: 60px; position:fixed; z-index: 1000;">
-        <form class="d-flex mx-5" role="search">
-            <input class="form-control w-50 ms-5 me-3" id="txtSearch" type="text" placeholder="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-        </form>
+        <form class="d-flex" role="search">
+            <input class="form-control w-50 my-auto mx-auto" id="txtSearch" type="text" placeholder="Search">
+                    </form>
 
     </div>
 

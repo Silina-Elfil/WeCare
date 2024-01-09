@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include("navbar2.php"); ?>
 
-    <div class="container mt-5">
+    <div class="container mt-5 w-50 mx-auto">
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h1 class="card-title">Create Post</h1>
@@ -81,8 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="form-row mt-3">
                         <div class="col-lg-10">
-                            <a href="#" class="btn btn-secondary">CANCEL</a>
-                            <button type="submit" class="btn btn-primary">POST</button>
+                            <button type="submit" class="btn btn-primary float-end ml-2">POST</button>
+                            <button type="reset" class="btn btn-secondary float-end ml-2">Cancel</button>
                         </div>
                     </div>
                 </form>

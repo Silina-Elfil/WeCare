@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<div class="row g-0">';
     echo '<div class="col-md-4">';
     $img = $row['profilePicture'];
-    echo "<img src='..\\images\\$img' class='img-fluid rounded-start' alt='img'>";
+    echo "<img src='images\\$img' class='img-fluid rounded-start' alt='img'>";
     echo "</div>";
     echo '<div class="col-md-8">';
     echo '<div class="card-body">';

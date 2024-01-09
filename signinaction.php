@@ -27,7 +27,7 @@
                 $_SESSION['username'] = $username; // Set a session variable if needed
                 $_SESSION['memberId'] = $row['memberId'];
                 $_SESSION['roleId'] = $row['roleId'];
-                header("Location: home.php");
+                header("Location: interaction.php");
                 exit();
             }
         }

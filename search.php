@@ -21,7 +21,7 @@ if($result && mysqli_num_rows($result)>0){
       echo '<div class="row g-0">';
       echo '<div class="col-md-4">';
 
-      $p = "SELECT profilePicture FROM member WHERE username = '$row[username]";
+      $p = "SELECT profilePicture FROM member WHERE username = '$row[username]'";
       $r = mysqli_query($con, $p);
       $f = mysqli_fetch_array($r);
       

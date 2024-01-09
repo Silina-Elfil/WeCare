@@ -59,7 +59,7 @@ $memberId = $_SESSION['memberId'];
             <div class="card mb-3" style="width: 100%;">
                 <div class="row g-0">
                     <div class="col-md-3">
-                        <img src="images\\<?php echo $row['profilePicture'] ?>" class="img-fluid rounded-start" alt="">
+                        <img src="images\\<?php echo $row['profilePicture'] ?>" class="img-fluid rounded-start" alt="" style="height: 300px;">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -92,7 +92,7 @@ $memberId = $_SESSION['memberId'];
 
     <?php
     }
-
+    $isUser = 1;
     include("posts.php");
     ?>
 

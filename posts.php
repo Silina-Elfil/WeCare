@@ -20,7 +20,8 @@
 
 <body>
     <?php
-    $query = "SELECT * FROM posts WHERE memberId = '$memberId' ORDER BY date ASC";
+    if (isset($isUser) && $isUser == 1) {
+    $query = "SELECT * FROM posts WHERE memberId = '$memberId' ORDER BY date DESC";
     $result = mysqli_query($con, $query);
 
     if (!$result) {
@@ -40,7 +41,7 @@
             $image = $row['image'];
             $likeCount = $row['likeCount'];
         ?>
-            <div class="card mb-3 w-50 mx-auto">
+            <div class="card mb-3 mx-auto" style="width: 80%">
                 <div class="card-body text-center">
                     <div>
                         <h3 class="card-title float-start"><?= $row2['username'] ?></h3>
@@ -69,6 +70,8 @@
                 </div>
             </div>
         <?php
+        }}else{
+
         }
         ?>
     </div>
@@ -97,7 +100,7 @@
             };
             xhr.open("POST", "update_like_count.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("postId=" + postId + "&isLiked=" + (isLiked ? 0 : 1));
+            xhr.send("postId=" + postId);
         }
     </script>
 </body>
